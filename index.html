@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinSight — Personal Expense & Budget Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="top-header">
+      <div>
+        <h1>FinSight 💳</h1>
+        <p>Personal Expense & Budget Analytics Dashboard</p>
+      </div>
+      <button id="export-btn" class="secondary-btn">📥 Export CSV</button>
+    </header>
+
+    <!-- Summary Cards -->
+    <section class="summary-grid">
+      <div class="card">
+        <span>Total Balance</span>
+        <h2 id="total-balance">₹0.00</h2>
+      </div>
+      <div class="card income">
+        <span>Total Income</span>
+        <h2 id="total-income">+₹0.00</h2>
+      </div>
+      <div class="card expense">
+        <span>Total Expenses</span>
+        <h2 id="total-expense">-₹0.00</h2>
+      </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <div class="main-grid">
+      <!-- Add Transaction Form -->
+      <section class="card form-section">
+        <h3>Add Transaction</h3>
+        <form id="transaction-form">
+          <input type="text" id="desc-input" placeholder="Description (e.g., Cloud Hosting, Coffee)" required />
+          <input type="number" id="amount-input" placeholder="Amount in ₹" step="0.01" min="1" required />
+          
+          <div class="row">
+            <select id="type-select">
+              <option value="expense">Expense (-)</option>
+              <option value="income">Income (+)</option>
+            </select>
+            <select id="category-select">
+              <option value="Food & Dining">🍔 Food & Dining</option>
+              <option value="Tech & Software">💻 Tech & Software</option>
+              <option value="Travel & Commute">🚇 Travel & Commute</option>
+              <option value="Bills & Utilities">⚡ Bills & Utilities</option>
+              <option value="Salary / Stipend">💰 Salary / Stipend</option>
+            </select>
+          </div>
+
+          <button type="submit" class="primary-btn">Add Transaction</button>
+        </form>
+      </section>
+
+      <!-- Chart Analytics -->
+      <section class="card chart-section">
+        <h3>Expense Breakdown</h3>
+        <div class="chart-wrapper">
+          <canvas id="expense-chart"></canvas>
+        </div>
+      </section>
+    </div>
+
+    <!-- Transaction History -->
+    <section class="card history-section">
+      <h3>Recent Transactions</h3>
+      <ul id="transaction-list"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
